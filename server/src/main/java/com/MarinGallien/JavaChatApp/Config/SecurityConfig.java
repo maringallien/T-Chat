@@ -46,9 +46,7 @@ public class SecurityConfig {
                 // Websocket endpoint (will be handled by websocket security)
                 .requestMatchers("/ws/**").permitAll()
 
-                .requestMatchers("/api/**").permitAll()
-
-                    // All other endpoints require authentication
+                // All other endpoints require authentication
                 .anyRequest().authenticated()
             )
 

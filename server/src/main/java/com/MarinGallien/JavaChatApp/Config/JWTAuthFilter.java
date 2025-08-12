@@ -37,12 +37,22 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
 
+        String path = request.getRequestURI();
+        if (path.startsWith("/api")) {
+            logger.info("DEBUG: Processing API request to: {}", path);
+            logger.info("DEBUG: Request method: {}", request.getMethod());
+        }
+
         // Extract token from authorization header
         String authHeader = request.getHeader("Authorization");
+        logger.info("DEBUG: Authorization header: {}", authHeader != null ? "Present" : "Missing");
+
         String jwt = jwtService.extractTokenFromHeader(authHeader);
+        logger.info("DEBUG: Extracted JWT: {}", jwt != null ? "Present" : "Missing");
 
         // If no token present, continue without authentication
         if (jwt == null) {
+            logger.warn("DEBUG: No JWT token found, continuing without authentication");
             filterChain.doFilter(request, response);
             return;
         }
@@ -57,11 +67,13 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
             // Extract user information from token
             String userId = jwtService.extractUserId(jwt);
+            logger.info("DEBUG: Extracted userId from JWT: {}", userId);
 
             // Check if user is already authenticated in this request
             if (userId != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 // Load user from database
                 User user = userRepo.findUserById(userId);
+                logger.info("DEBUG: User found in database: {}", user != null);
 
                 if (user != null) {
                     // Create authentication token
@@ -70,12 +82,15 @@ public class JWTAuthFilter extends OncePerRequestFilter {
                             null,
                             new ArrayList<>()
                     );
+                    logger.info("DEBUG: Authentication token created successfully");
 
                     // Set additional details
                     authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    logger.info("DEBUG: Authentication details set successfully");
 
                     // Set authentication in security context
                     SecurityContextHolder.getContext().setAuthentication(authToken);
+                    logger.info("DEBUG: Authentication set in security context successfully");
 
                     logger.debug("Successfully authenticated user: {}", userId);
                 } else {
@@ -98,8 +113,7 @@ public class JWTAuthFilter extends OncePerRequestFilter {
                 path.equals("/auth/register") ||
                 path.equals("/h2-console") ||
                 path.equals("/public") ||
-                path.startsWith("/ws") ||
-                path.startsWith("/api");
+                path.startsWith("/ws");
     }
 
 }
