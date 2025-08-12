@@ -1,6 +1,3 @@
 
 Fixes:
-. You forgot to implement delete file command
-
-Upgrades:
-. Update code to be less repetitive by using lambda and helper methods
+. You forgot to activate JWT filtering

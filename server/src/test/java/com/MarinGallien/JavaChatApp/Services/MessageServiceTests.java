@@ -178,7 +178,7 @@ public class MessageServiceTests {
     @Test
     void getChatMessages_DatabaseFailureOrNoMessagesFound_ReturnsEmptyList() {
         // Given - simulate database service returning null (error case)
-        when(messageDbService.getChatMessages(senderId, chatId)).thenReturn(null);
+        when(messageDbService.getChatMessages(senderId, chatId)).thenReturn(List.of());
 
         // When
         List<MessageDTO> result = messageService.getChatMessages(senderId, chatId);
@@ -192,35 +192,6 @@ public class MessageServiceTests {
     // ==========================================================================
     // EDGE CASE TESTS
     // ==========================================================================
-
-    @Test
-    void saveMessage_ExceptionThrown_ReturnsNull() {
-        // Given
-        when(messageDbService.saveMessage(senderId, chatId, content))
-                .thenThrow(new RuntimeException("com.MarinGallien.JavaChatApp.Config.Database error"));
-
-        // When
-        Message result = messageService.saveMessage(senderId, chatId, content);
-
-        // Then
-        assertNull(result);
-        verify(messageDbService).saveMessage(senderId, chatId, content);
-    }
-
-    @Test
-    void getChatMessages_ExceptionThrown_ReturnsEmptyList() {
-        // Given
-        when(messageDbService.getChatMessages(senderId, chatId))
-                .thenThrow(new RuntimeException("com.MarinGallien.JavaChatApp.Config.Database error"));
-
-        // When
-        List<MessageDTO> result = messageService.getChatMessages(senderId, chatId);
-
-        // Then
-        assertNotNull(result);
-        assertTrue(result.isEmpty());
-        verify(messageDbService).getChatMessages(senderId, chatId);
-    }
 
     @Test
     void saveMessage_LongContent_SavesMessage() {

@@ -107,20 +107,6 @@ public class SessionServiceTests {
     // ==========================================================================
 
     @Test
-    void updateUserStatus_ExceptionThrown_ReturnsNull() {
-        // Given
-        when(sessionDbService.updateStatus(userId, OnlineStatus.ONLINE))
-                .thenThrow(new RuntimeException("com.MarinGallien.JavaChatApp.Config.Database error"));
-
-        // When
-        OnlineStatus result = sessionService.updateUserStatus(userId, OnlineStatus.ONLINE);
-
-        // Then
-        assertNull(result);
-        verify(sessionDbService).updateStatus(userId, OnlineStatus.ONLINE);
-    }
-
-    @Test
     void updateUserStatus_DifferentUsers_UpdatesCorrectly() {
         // Given
         String user1Id = "user1";

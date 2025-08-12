@@ -92,7 +92,7 @@ public class HTTPRequests {
     ) implements ApiReqResInterface {}
 
 
-    // ========== File-related requests ==========
+        // ========== File-related requests ==========
     public static record GetChatFilesRequest(
             @NotBlank(message = "User ID is required")
             String userId,

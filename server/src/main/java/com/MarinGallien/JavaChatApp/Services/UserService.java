@@ -192,7 +192,7 @@ public class UserService {
     }
 
     private boolean validateEmail(String email) {
-        return email != null && email.trim().isEmpty() && email.contains("@") && email.contains(".");
+        return email != null && !email.trim().isEmpty() && email.contains("@") && email.contains(".");
     }
 
     private boolean validateId(String id) {

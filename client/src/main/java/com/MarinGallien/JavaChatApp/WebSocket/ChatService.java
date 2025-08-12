@@ -25,7 +25,7 @@ public class ChatService implements WebSocketClient.MessageHandler {
     }
 
     public ChatService(WebSocketClient webSocketClient) {
-//        ((ch.qos.logback.classic.Logger) logger).setLevel(Level.OFF);
+        ((ch.qos.logback.classic.Logger) logger).setLevel(Level.OFF);
         this.webSocketClient = webSocketClient;
     }
 

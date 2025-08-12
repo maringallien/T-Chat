@@ -40,7 +40,7 @@ public class APIClient {
     private String jwtToken;
 
     public APIClient() {
-//        ((ch.qos.logback.classic.Logger) logger).setLevel(Level.OFF);
+        ((ch.qos.logback.classic.Logger) logger).setLevel(Level.OFF);
         this.baseUrl = UserSession.getInstance().getHttpBaseUrl();
         this.httpClient = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(10))

@@ -440,7 +440,7 @@ public class LanternaUI implements ChatService.MessageListener {
 
         displayOutput("=== Group Chat Management ===");
         displayOutput("  add-member <chat_name> <contact_username>   - Add member to group chat");
-        displayOutput("  remove-member <chat_name> <contact_username>- Remove member from group chat");
+        displayOutput("  remove-member <chat_name> <contact_uname>   - Remove member from group chat");
         displayOutput("");
 
         displayOutput("=== Contact Management ===");
@@ -453,12 +453,13 @@ public class LanternaUI implements ChatService.MessageListener {
         displayOutput("  upload-file <chatname> <filepath>           - Upload file to chat");
         displayOutput("  download-file <chatname> <filename> <path>  - Download file from chat");
         displayOutput("  get-files <chatname>                        - List files in chat");
+        displayOutput("  delete-file <chatname> <filename>           - List files in chat");
         displayOutput("");
 
         displayOutput("=== Account Settings ===");
         displayOutput("  update-username <new_username>              - Update your username");
         displayOutput("  update-email <new_email>                    - Update your email");
-        displayOutput("  update-password <old_password> <new_password> - Update your password");
+        displayOutput("  update-password <old_passwd> <new_passwd>   - Update your password");
         displayOutput("");
 
         displayOutput("=== Utility ===");
@@ -468,7 +469,7 @@ public class LanternaUI implements ChatService.MessageListener {
         displayOutput("");
 
         displayOutput("=== In Chat Mode ===");
-        displayOutput("  Type messages to send them");
+        displayOutput("  Type messages, press enter to send ");
         displayOutput("  /exit                                       - Leave current chat");
     }
 
