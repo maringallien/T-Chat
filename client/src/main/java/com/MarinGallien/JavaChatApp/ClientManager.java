@@ -212,7 +212,7 @@ public class ClientManager {
             boolean success = apiService.createPrivateChat(contactId);
 
             if (success) {
-                lanternaUI.showPrivateChatCreated(contactId);
+                lanternaUI.showPrivateChatCreated(contactUname);
             } else {
                 lanternaUI.showError("Failed to create private chat");
             }

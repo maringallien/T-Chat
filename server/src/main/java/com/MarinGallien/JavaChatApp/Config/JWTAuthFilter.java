@@ -96,6 +96,8 @@ public class JWTAuthFilter extends OncePerRequestFilter {
                 } else {
                     logger.warn("User not found in database for userId: {}", userId);
                 }
+
+                filterChain.doFilter(request, response);
             }
 
         } catch (Exception e) {

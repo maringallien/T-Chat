@@ -1,4 +1,4 @@
-	<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
@@ -9,9 +9,8 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>java-chat-app-server</artifactId>
-	<name>java-chat-app-server</name>
-	<description>Cloud Based Java Chat Application - Server</description>
+	<artifactId>server</artifactId>
+	<name>server</name>
 
 	<dependencies>
 		<!-- Spring Boot starters -->
@@ -111,6 +110,19 @@
 				<configuration>
 					<skip>false</skip> <!-- Enable only for server -->
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jetbrains.dokka</groupId>
+				<artifactId>dokka-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>dokka</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

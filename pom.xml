@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>java-chat-app-parent</name>
+    <name>parent</name>
     <description>Cloud Based Java Chat Application - Parent Project</description>
 
     <properties>
@@ -61,9 +61,21 @@
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <version>${spring.boot.version}</version>
                     <configuration>
-                        <skip>true</skip> <!-- Skip by default -->
+                        <skip>true</skip>
                     </configuration>
                 </plugin>
+
+                <plugin>
+                    <groupId>org.jetbrains.dokka</groupId>
+                    <artifactId>dokka-maven-plugin</artifactId>
+                    <version>1.9.20</version>
+                    <configuration>
+                        <includeNonPublic>true</includeNonPublic>
+                        <jdkVersion>24</jdkVersion>
+                        <failOnWarning>false</failOnWarning>
+                    </configuration>
+                </plugin>
+
 
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

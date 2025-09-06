@@ -1,5 +1,6 @@
-package com.MarinGallien.JavaChatApp.Services.AuthService;
+package com.MarinGallien.JavaChatApp.Services;
 
+import com.MarinGallien.JavaChatApp.Services.AuthService.JWTService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.util.ReflectionTestUtils;
